@@ -20,6 +20,7 @@ public class Trainer {
                     p1 = new Bulbasaur();
                     break;
                 }
+                System.out.println(p1.name + "に決めた！");
                 start = false;
             }
             System.out.println("何をしようか？");
