@@ -3,7 +3,8 @@ package jp.ac.uryukyu.ie.e225704;
 import java.util.Scanner;
 
 public class Trainer {
-    public static void main(String[] args) {
+
+    public void newGame(){
         boolean con = true;
         boolean start = true;
         Scanner scanner = new Scanner(System.in);
@@ -42,6 +43,5 @@ public class Trainer {
                 break;
             }
         }
-
     }
 }
