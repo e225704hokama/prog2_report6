@@ -17,6 +17,7 @@ public class Ivysaur extends Pokemon{
     public Pokemon evolution(){
         if(this.level >= this.evolutionLevel){
             Venusaur venusaur = new Venusaur();
+            venusaur.takeStatus(this);
             System.out.println(this.name + "は、" + venusaur.name + "にしんかした！");
             return venusaur;
         }

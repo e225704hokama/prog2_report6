@@ -21,12 +21,16 @@ public class Bulbasaur extends Pokemon{
 
         this.level = 1;
         this.evolutionLevel = 16;
+        if(this.individualValue[3] == 7 && this.individualValue[5] == 7){
+            this.precious += "✨"; //色違いマーク。原作と抽選方法は少し異なるが、金銀では近しい方法が採られていた。
+        }
     }
 
     @Override
     public Pokemon evolution(){
         if(this.level >= this.evolutionLevel){
             Ivysaur ivysaur = new Ivysaur();
+            ivysaur.takeStatus(this);
             System.out.println(this.name + "は、" + ivysaur.name + "にしんかした！");
             return ivysaur;
         }

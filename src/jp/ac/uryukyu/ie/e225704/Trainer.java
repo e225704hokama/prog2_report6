@@ -5,11 +5,11 @@ import java.util.Scanner;
 public class Trainer {
 
     public void newGame(){
-        boolean con = true;
-        boolean start = true;
+        boolean con = true; //ゲームを終了させる
+        boolean start = true; //育てるポケモンを既に決めているかを判断する
         Scanner scanner = new Scanner(System.in);
         
-        Pokemon p1 = new Bulbasaur();
+        Pokemon p1 = new Bulbasaur(); //デフォルトのポケモン
 
         while(con){
             if(start == true){
