@@ -5,17 +5,67 @@ import java.util.Random;
 import javax.sound.midi.VoiceStatus;
 
 public abstract class Pokemon {
-    String name; //その個体の種族名
-    String precious = ""; //色違いなどのシミュレーション要素を入れたい
-    int[] raceValue = new int[6]; //俗に言う種族値
-    int[] individualValue = new int[6]; //俗に言う個体値
-    int[] efortValue = new int[6]; //俗に言う努力値
-    int level; //その個体のレベル
+    private String name; //その個体の種族名
+    private String precious = ""; //色違いなどのシミュレーション要素を入れたい
+    private int[] raceValue = new int[6]; //俗に言う種族値
+    private int[] individualValue = new int[6]; //俗に言う個体値
+    private int[] efortValue = new int[6]; //俗に言う努力値
+    private int[] status = new int[6]; //俗に言う実数値。プレイヤーが見ることができる能力値
+    private int level; //その個体のレベル
     final int maxLevel = 100; //原作通り最高レベルは100にしておく
-    int evolutionLevel; //進化するレベル
-    int[] status = new int[6]; //俗に言う実数値。プレイヤーが見ることができる能力値
+    private int evolutionLevel; //進化するレベル
+    
 
-    public abstract Pokemon evolution(); //各々進化先が異なるので抽象メソッドにした
+    //getterメソッド
+    public String getterName(){
+        return this.name;
+    }
+    public String getterPrecious(){
+        return this.precious;
+    }
+    public int getterRaceValue(int i){
+        return this.raceValue[i];
+    }
+    public int getterIndividualValue(int i){
+        return this.individualValue[i];
+    }
+    public int getterEfortValue(int i){
+        return this.efortValue[i];
+    }
+    public int getterStatus(int i){
+        return this.status[i];
+    }
+    public int getterLevel(){
+        return this.level;
+    }
+    public int getterEvolutionLevel(){
+        return this.evolutionLevel;
+    }
+
+    //setterメソッド
+    public void setterName(String name){
+        this.name = name;
+    }
+    public void setterPrecious(String mark){
+        this.precious += mark;
+    }
+    public void setterLevel(int i){
+        this.level += i;
+    }
+    public void setterEvolutionLevel(int i){
+        this.evolutionLevel = i;
+    }
+    public void setterRaceValue(int i, int s){
+        this.raceValue[i] = s;
+    }
+    public void setterIndividualValue(int i, int s){
+        this.individualValue[i] = s;
+    }
+    public void setterEfortValue(int i, int s){
+        this.efortValue[i] = s;
+    }
+
+    abstract Pokemon evolution(); //各々進化先が異なるので抽象メソッドにした
 
     public void summary(){ //種族名、レベル、実数値などのステータスを表示するメソッド
         System.out.println(this.name + " " + this.precious + "　　Lv." + this.level);
@@ -24,7 +74,7 @@ public abstract class Pokemon {
         int statuss;
         this.calcStatus();
         for(int i=0; i<6; i+=1){
-            statuss = this.status[i];
+            statuss = this.individualValue[i];
             System.out.println(statuss);
         }
         
