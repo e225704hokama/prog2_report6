@@ -28,6 +28,29 @@ public class EventMaker {
     }
 
     protected void randomEvent(Pokemon pokemon){
+        int eventIndex = new Random().nextInt(500);
+        
+        if(eventIndex >= 0 && eventIndex <= 9 && pokemon.getterEventCounter(0)){ //2％イベント
+            System.out.println();
+            pokemon.setterPrecious("💚");
+            pokemon.setterEventCounter(0);
+        }
+        if(eventIndex >= 10 && eventIndex <= 14 && pokemon.getterEventCounter(1)){ //1％イベント
+            System.out.println();
+            pokemon.setterPrecious("💙");
+            pokemon.setterEventCounter(1);
+        }
+        if(eventIndex == 15 && pokemon.getterEventCounter(2)){ //0.2％イベント
+            System.out.println();
+            pokemon.setterPrecious("🧡");
+            pokemon.setterEventCounter(2);
+        }
+        if(eventIndex == 16 && pokemon.getterEventCounter(3)){ //0.2%イベント
+            System.out.println();
+            pokemon.setterPrecious("🤍");
+            pokemon.setterEventCounter(3);
+        }
+        
     }
 
     

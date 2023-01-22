@@ -3,7 +3,7 @@ package jp.ac.uryukyu.ie.e225704;
 import java.util.Random;
 
 public abstract class Pokemon {
-    private String name; //その個体の種族名
+    private String name; //そのポケモンの種族名
     private String precious = ""; //色違いなどのシミュレーション要素を入れたい
     private int[] raceValue = new int[6]; //俗に言う種族値。0 = HP、1 = 攻撃、2 = 防御、3 = 特攻、4 = 特防、5 = 素早さ
     private int[] individualValue = new int[6]; //俗に言う個体値。上と同じ
@@ -12,15 +12,17 @@ public abstract class Pokemon {
     private int level; //その個体のレベル
     final int maxLevel = 100; //原作通り最高レベルは100にしておく
     private int evolutionLevel; //進化するレベル
+    private boolean[] eventCounter = {true, true, true, true}; //EventMakerクラスで使用。各イベント最大一回ずつのみ起きるようにする
     private boolean medal = true; //EventMakerクラスで使用。🎖をもらったかを確認する
     
     public Pokemon(){
         this.setterLevel(1);
-
         for(int i=0; i<6; i++){
             this.setterIndividualValue(i, new Random().nextInt(32));
         }
     }
+    
+    
 
     //getterメソッド
     public String getterName(){
@@ -47,6 +49,9 @@ public abstract class Pokemon {
     public int getterEvolutionLevel(){
         return this.evolutionLevel;
     }
+    public boolean getterEventCounter(int i){
+        return this.eventCounter[i];
+    }
     public boolean getterMedal(){
         return this.medal;
     }
@@ -72,6 +77,9 @@ public abstract class Pokemon {
     }
     public void setterEfortValue(int i, int s){ //努力値は増える
         this.efortValue[i] += s;
+    }
+    public void setterEventCounter(int i){
+        this.eventCounter[i] = false;
     }
     public void setterMedal(){
         this.medal = false;

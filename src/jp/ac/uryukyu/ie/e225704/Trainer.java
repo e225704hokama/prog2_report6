@@ -19,26 +19,26 @@ public class Trainer {
         
     }
 
-    private Pokemon partySelect(){
+    private Pokemon partySelect(Pokemon pokemon){
         Scanner scanner = new Scanner(System.in);
-        int i = 0;
+        int i = 1;
         System.out.println("\nてもちポケモン");
+        System.out.println("0. もどる");
         for(var member : this.party){
-            System.out.println(i + ". " + member.getterName() + "　Lv." + member.getterLevel());
+            System.out.println(i + ". " + member.getterName() + " " + member.getterPrecious() + "　Lv." + member.getterLevel());
             i ++;
         }
         while(true){
             int number = scanner.nextInt();
 
-            if(number >=0 && number <= i){
-                System.out.println("\nいけ、 " + this.party.get(number).getterName() + "！\n");
-                return this.party.get(number);
+            if(number >=1 && number <= i){
+                System.out.println("\nいけ、 " + this.party.get(number-1).getterName() + "！\n");
+                return this.party.get(number-1);
+            }
+            else{
+                continue;
             }
         }
-        
-        
-        
-
     }
 
     public void newGame(){
@@ -64,10 +64,12 @@ public class Trainer {
                     case "z" :
                     p1 = new Squirtle();
                     break;
+                    default :
+                    continue; //上記のアルファベット以外が入力された場合もう一度入力を求める
                 }
                 System.out.println(p1.getterName() + "に決めた！\n");
-                party.add(p1);
                 start = false;
+                
             }
             System.out.println("何をしようか？");
             System.out.println("たたかう＝b、つよさをみる＝s、しんかさせる＝e、別のポケモンを育てる＝c、手持ちを見る＝p、終了する＝f");
@@ -76,6 +78,7 @@ public class Trainer {
             switch(order){
                 case "b" :
                 eventMaker.battle(p1);
+                eventMaker.randomEvent(p1);
                 break;
                 case "s" :
                 summary(p1);
@@ -84,16 +87,17 @@ public class Trainer {
                 p1 = p1.evolution();
                 break;
                 case "c" :
+                party.add(p1);
                 if(party.size() < 6){
                     System.out.println(p1.getterName() + "は手持ちに戻した。\n");
                     start = true;
                 }
                 else{
-                    System.out.println("これ以上は育てるのは身がもたない．．．");
+                    System.out.println("これ以上は育てるのは身がもたない．．．\n");
                 }
                 break;
                 case "p" :
-                p1 = this.partySelect();
+                p1 = this.partySelect(p1);
                 break;
                 case "f" :
                 con = false;
