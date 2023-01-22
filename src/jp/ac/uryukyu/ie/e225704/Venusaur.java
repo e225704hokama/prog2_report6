@@ -14,7 +14,7 @@ public class Venusaur extends Pokemon{
 
     @Override
     public Pokemon evolution(){
-        System.out.println("これ以上は成長できなさそうだ。");
+        System.out.println("これ以上は成長できなさそうだ。\n");
         return this;
     }
 }

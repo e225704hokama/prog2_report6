@@ -2,6 +2,7 @@ package jp.ac.uryukyu.ie.e225704;
 
 public class Ivysaur extends Pokemon{
     public Ivysaur(){
+        super();
         this.setterName("フシギソウ");
         this.setterRaceValue(0, 60);
         this.setterRaceValue(1, 62);
@@ -18,11 +19,11 @@ public class Ivysaur extends Pokemon{
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Venusaur venusaur = new Venusaur();
             venusaur.takeStatus(this);
-            System.out.println(this.getterName() + "は、" + venusaur.getterName() + "にしんかした！");
+            System.out.println(this.getterName() + "は、" + venusaur.getterName() + "にしんかした！\n");
             return venusaur;
         }
         else{
-            System.out.println("思い上がり過ぎたようだ。");
+            System.out.println("思い上がり過ぎたようだ。\n");
             return this;
         }
     }

@@ -2,17 +2,17 @@ package jp.ac.uryukyu.ie.e225704;
 
 import java.util.Random;
 
-public class Bulbasaur extends Pokemon{
-    public Bulbasaur(){
+public class Charmander extends Pokemon{
+    public Charmander(){
         super();
 
-        this.setterName("フシギダネ");
-        this.setterRaceValue(0, 45);
-        this.setterRaceValue(1, 49);
-        this.setterRaceValue(2, 49);
-        this.setterRaceValue(3, 65);
-        this.setterRaceValue(4, 65);
-        this.setterRaceValue(5, 45);
+        this.setterName("ヒトカゲ");
+        this.setterRaceValue(0, 39);
+        this.setterRaceValue(1, 52);
+        this.setterRaceValue(2, 43);
+        this.setterRaceValue(3, 60);
+        this.setterRaceValue(4, 55);
+        this.setterRaceValue(5, 50);
         this.setterEvolutionLevel(16);
 
         if(this.getterIndividualValue(0) == 7 && this.getterIndividualValue(5) == 7){
@@ -23,10 +23,10 @@ public class Bulbasaur extends Pokemon{
     @Override
     public Pokemon evolution(){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
-            Ivysaur ivysaur = new Ivysaur();
-            ivysaur.takeStatus(this);
-            System.out.println(this.getterName() + "は、" + ivysaur.getterName() + "にしんかした！\n");
-            return ivysaur;
+            Charmeleon charmeleon = new Charmeleon();
+            charmeleon.takeStatus(this);
+            System.out.println(this.getterName() + "は、" + charmeleon.getterName() + "にしんかした！\n");
+            return charmeleon;
         }
         else{
             System.out.println("思い上がり過ぎたようだ。\n");
