@@ -35,7 +35,7 @@ public class Trainer {
         
     }
 
-    private Pokemon partySelect(Pokemon pokemon){
+    protected Pokemon partySelect(Pokemon pokemon){
         Scanner scanner = new Scanner(System.in);
         int i = 2;
 
