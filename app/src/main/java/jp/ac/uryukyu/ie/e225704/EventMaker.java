@@ -77,7 +77,7 @@ public class EventMaker {
                 case "c" :
                 int chatchIndex = new Random().nextInt(9);
                 
-                if(trainer.getterParty().size() < 6){
+                if(trainer.getterParty().size() < 5){
                     System.out.println("いけ！　モンスターボール！");
                     
                     if(chatchIndex < 3){

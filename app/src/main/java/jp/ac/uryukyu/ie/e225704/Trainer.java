@@ -5,7 +5,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Trainer {
-    private ArrayList<Pokemon> party = new ArrayList<Pokemon>(6);
+    private ArrayList<Pokemon> party = new ArrayList<Pokemon>();
     
     //getterクラス
     public ArrayList<Pokemon> getterParty(){
@@ -13,7 +13,7 @@ public class Trainer {
     }
     //setterクラス
     public void setterParty(Pokemon pokemon){
-        if(this.party.size() <6){
+        if(this.party.size() <5){
             this.party.add(pokemon);
         }
         else{
@@ -58,7 +58,7 @@ public class Trainer {
                 return pokemon;
             }
             if(number == 1){
-                if(this.party.size() < 6){
+                if(this.party.size() < 5){
                     this.party.add(pokemon);
                     System.out.println(pokemon.getterName() + "は手持ちに戻した。\n");
                     this.start = true;
