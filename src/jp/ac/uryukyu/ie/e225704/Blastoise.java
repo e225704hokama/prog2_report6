@@ -13,7 +13,7 @@ public class Blastoise extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         System.out.println("これ以上は成長できなさそうだ。\n");
         return this;
     }

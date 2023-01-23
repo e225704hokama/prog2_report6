@@ -21,10 +21,14 @@ public class Squirtle extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Wartortle wartortle = new Wartortle();
             wartortle.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + wartortle.getterName() + "にしんかした！\n");
             return wartortle;
         }

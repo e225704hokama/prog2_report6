@@ -21,10 +21,14 @@ public class Charmander extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Charmeleon charmeleon = new Charmeleon();
             charmeleon.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + charmeleon.getterName() + "にしんかした！\n");
             return charmeleon;
         }

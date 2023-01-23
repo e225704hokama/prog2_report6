@@ -15,10 +15,14 @@ public class Charmeleon extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Charizard charizard = new Charizard();
             charizard.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + charizard.getterName() + "にしんかした！\n");
             return charizard;
         }

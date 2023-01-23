@@ -85,7 +85,7 @@ public abstract class Pokemon {
         this.medal = false;
     }
 
-    abstract Pokemon evolution(); //各々進化先が異なるので抽象メソッドにした
+    abstract Pokemon evolution(Trainer trainer); //各々進化先が異なるので抽象メソッドにした
 
     protected int[] calcStatus(){ //実数値を計算するメソッド
         for(int i=0; i<6; i++){

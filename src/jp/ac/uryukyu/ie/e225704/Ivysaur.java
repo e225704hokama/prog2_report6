@@ -15,10 +15,14 @@ public class Ivysaur extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Venusaur venusaur = new Venusaur();
             venusaur.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + venusaur.getterName() + "にしんかした！\n");
             return venusaur;
         }

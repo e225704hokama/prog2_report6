@@ -5,6 +5,21 @@ import java.util.Scanner;
 
 public class Trainer {
     private ArrayList<Pokemon> party = new ArrayList<Pokemon>(6);
+    
+    //getterクラス
+    public ArrayList<Pokemon> getterParty(){
+        return this.party;
+    }
+    //setterクラス
+    public void setterParty(Pokemon pokemon){
+        if(this.party.size() <6){
+            this.party.add(pokemon);
+        }
+        else{
+            System.out.println("これ以上は育てるのは身がもたない．．．\n");
+        }
+        
+    }
 
     public void summary(Pokemon pokemon){ //種族名、レベル、実数値などのステータスを表示するメソッド
         System.out.println(pokemon.getterName() + "　" + pokemon.getterPrecious() + "　　Lv." + pokemon.getterLevel());
@@ -21,9 +36,10 @@ public class Trainer {
 
     private Pokemon partySelect(Pokemon pokemon){
         Scanner scanner = new Scanner(System.in);
-        int i = 1;
+        int i = 2;
+        System.out.println("\n0. もどる");
+        System.out.println("1. 新しくポケモンを育てる");
         System.out.println("\nてもちポケモン");
-        System.out.println("0. もどる");
         for(var member : this.party){
             System.out.println(i + ". " + member.getterName() + " " + member.getterPrecious() + "　Lv." + member.getterLevel());
             i ++;
@@ -31,21 +47,37 @@ public class Trainer {
         while(true){
             int number = scanner.nextInt();
 
-            if(number >=1 && number <= i){
-                System.out.println("\nいけ、 " + this.party.get(number-1).getterName() + "！\n");
-                return this.party.get(number-1);
+            if(number == 0){
+                return pokemon;
+            }
+            if(number == 1){
+                if(this.party.size() < 6){
+                    this.party.add(pokemon);
+                    System.out.println(pokemon.getterName() + "は手持ちに戻した。\n");
+                    this.start = true;
+                    return pokemon;
+                }
+                else{
+                    System.out.println("これ以上は育てるのは身がもたない．．．\n");
+                    return pokemon;
+                }
+            }
+            if(i > 2 && number >=2 && number <= i){ //もどるや新しく育てるの項目を入れているため実際の指定するてもちの位置は−２
+                party.add(pokemon);
+                System.out.println("\nいけ、 " + this.party.get(number-2).getterName() + "！\n");
+                return this.party.get(number-2);
             }
             else{
                 continue;
             }
         }
     }
+    //ゲームを動かすメインのコード
+    private boolean con = true; //ゲームを終了させる
+    private boolean start = true; //育てるポケモンを既に決めているかを判断する
 
     public void newGame(){
-        boolean con = true; //ゲームを終了させる
-        boolean start = true; //育てるポケモンを既に決めているかを判断する
         Scanner scanner = new Scanner(System.in);
-        
         Pokemon p1 = new Bulbasaur(); //デフォルトのポケモン
         EventMaker eventMaker = new EventMaker(); //イベントを発生させる
 
@@ -72,36 +104,31 @@ public class Trainer {
                 
             }
             System.out.println("何をしようか？");
-            System.out.println("たたかう＝b、つよさをみる＝s、しんかさせる＝e、別のポケモンを育てる＝c、手持ちを見る＝p、終了する＝f");
+            System.out.println("トレーニング＝b、つよさをみる＝s、しんかさせる＝e、ポケモンを入れ替える＝p、終了する＝f");
             String order = scanner.next();
 
             switch(order){
                 case "b" :
                 eventMaker.battle(p1);
-                eventMaker.randomEvent(p1);
+                eventMaker.randomEvent(this, p1);
                 break;
                 case "s" :
                 summary(p1);
                 break;
                 case "e" :
-                p1 = p1.evolution();
-                break;
-                case "c" :
-                party.add(p1);
-                if(party.size() < 6){
-                    System.out.println(p1.getterName() + "は手持ちに戻した。\n");
-                    start = true;
-                }
-                else{
-                    System.out.println("これ以上は育てるのは身がもたない．．．\n");
-                }
+                p1 = p1.evolution(this);
                 break;
                 case "p" :
+                if(this.party.contains(p1)){
+                    party.remove(p1);
+                }
                 p1 = this.partySelect(p1);
                 break;
                 case "f" :
                 con = false;
                 break;
+                default :
+                continue;
             }
             
         }

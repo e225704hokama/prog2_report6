@@ -15,10 +15,14 @@ public class Wartortle extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Blastoise blastoise = new Blastoise();
             blastoise.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + blastoise.getterName() + "にしんかした！\n");
             return blastoise;
         }

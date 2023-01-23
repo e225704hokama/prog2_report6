@@ -21,10 +21,14 @@ public class Bulbasaur extends Pokemon{
     }
 
     @Override
-    public Pokemon evolution(){
+    public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){
             Ivysaur ivysaur = new Ivysaur();
             ivysaur.takeStatus(this);
+            if(trainer.getterParty().contains(this)){
+                int i = trainer.getterParty().indexOf(this);
+                trainer.getterParty().remove(i);
+            }
             System.out.println(this.getterName() + "は、" + ivysaur.getterName() + "にしんかした！\n");
             return ivysaur;
         }
