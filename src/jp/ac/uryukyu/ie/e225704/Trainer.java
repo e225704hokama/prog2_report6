@@ -1,6 +1,7 @@
 package jp.ac.uryukyu.ie.e225704;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Trainer {
@@ -21,7 +22,7 @@ public class Trainer {
         
     }
 
-    public void summary(Pokemon pokemon){ //種族名、レベル、実数値などのステータスを表示するメソッド
+    protected void summary(Pokemon pokemon){ //種族名、レベル、実数値などのステータスを表示するメソッド
         System.out.println(pokemon.getterName() + "　" + pokemon.getterPrecious() + "　　Lv." + pokemon.getterLevel());
         System.out.println("つよさ");
         
@@ -37,6 +38,11 @@ public class Trainer {
     private Pokemon partySelect(Pokemon pokemon){
         Scanner scanner = new Scanner(System.in);
         int i = 2;
+
+        if(this.party.contains(pokemon)){
+            party.remove(pokemon);
+        }
+
         System.out.println("\n0. もどる");
         System.out.println("1. 新しくポケモンを育てる");
         System.out.println("\nてもちポケモン");
@@ -45,7 +51,8 @@ public class Trainer {
             i ++;
         }
         while(true){
-            int number = scanner.nextInt();
+            try{
+                int number = scanner.nextInt();
 
             if(number == 0){
                 return pokemon;
@@ -69,6 +76,10 @@ public class Trainer {
             }
             else{
                 continue;
+            }
+            } catch(InputMismatchException e){
+                System.out.println("数字を一文字入力してください\n");
+                return pokemon;
             }
         }
     }
@@ -101,7 +112,6 @@ public class Trainer {
                 }
                 System.out.println(p1.getterName() + "に決めた！\n");
                 start = false;
-                
             }
             System.out.println("何をしようか？");
             System.out.println("トレーニング＝b、つよさをみる＝s、しんかさせる＝e、ポケモンを入れ替える＝p、終了する＝f");
@@ -119,9 +129,6 @@ public class Trainer {
                 p1 = p1.evolution(this);
                 break;
                 case "p" :
-                if(this.party.contains(p1)){
-                    party.remove(p1);
-                }
                 p1 = this.partySelect(p1);
                 break;
                 case "f" :
@@ -130,7 +137,6 @@ public class Trainer {
                 default :
                 continue;
             }
-            
         }
     }
 }
