@@ -3,6 +3,10 @@ package jp.ac.uryukyu.ie.e225704;
 import java.util.Random;
 
 public class Squirtle extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する。しんかできるようになるレベルを代入する。HPと素早さの個体値が共に７だった場合色違いのマークをpreciousに追加する
+     */
     public Squirtle(){
         super();
 
@@ -20,6 +24,10 @@ public class Squirtle extends Pokemon{
         }
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * Wartortleのインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){

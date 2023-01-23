@@ -1,6 +1,10 @@
 package jp.ac.uryukyu.ie.e225704;
 
 public class Charizard extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する
+     */
     public Charizard(){
         this.setterName("リザードン");
         this.setterRaceValue(0, 78);
@@ -12,6 +16,10 @@ public class Charizard extends Pokemon{
         this.setterEvolutionLevel(0);
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * しんかしないため自身のインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         System.out.println("これ以上は成長できなさそうだ。\n");

@@ -1,6 +1,10 @@
 package jp.ac.uryukyu.ie.e225704;
 
 public class Charmeleon extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する
+     */
     public Charmeleon(){
         super();
         this.setterName("リザード");
@@ -14,6 +18,10 @@ public class Charmeleon extends Pokemon{
 
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * Charizardのインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){

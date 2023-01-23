@@ -22,6 +22,10 @@ public class Trainer {
         
     }
 
+    /**
+     * ポケモンのステータスを表示するメソッド
+     * @param pokemon　計算するポケモンのインスタンス
+     */
     protected void summary(Pokemon pokemon){ //種族名、レベル、実数値などのステータスを表示するメソッド
         System.out.println(pokemon.getterName() + "　" + pokemon.getterPrecious() + "　　Lv." + pokemon.getterLevel());
         System.out.println("つよさ");
@@ -35,6 +39,11 @@ public class Trainer {
         
     }
 
+    /**
+     * ポケモンを入れ替えるメソッド
+     * @param pokemon　現在育てているポケモンのインスタンス
+     * @return　入れ替えるポケモンのインスタンス。もしくは現在のインスタンス
+     */
     protected Pokemon partySelect(Pokemon pokemon){
         Scanner scanner = new Scanner(System.in);
         int i = 2;
@@ -87,6 +96,9 @@ public class Trainer {
     private boolean con = true; //ゲームを終了させる
     private boolean start = true; //育てるポケモンを既に決めているかを判断する
 
+    /**
+     * ゲームを動かすメソッド
+     */
     public void newGame(){
         Scanner scanner = new Scanner(System.in);
         Pokemon p1 = new Bulbasaur(); //デフォルトのポケモン

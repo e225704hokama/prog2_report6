@@ -1,6 +1,10 @@
 package jp.ac.uryukyu.ie.e225704;
 
 public class Venusaur extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する
+     */
     public Venusaur(){
         this.setterName("フシギバナ");
         this.setterRaceValue(0, 80);
@@ -12,6 +16,10 @@ public class Venusaur extends Pokemon{
         this.setterEvolutionLevel(0);
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * しんかしないため自身のインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         System.out.println("これ以上は成長できなさそうだ。\n");

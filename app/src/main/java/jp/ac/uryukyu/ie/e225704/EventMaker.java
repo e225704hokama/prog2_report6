@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class EventMaker {
     private String[] enemys = {"キャタピー", "ワンリキー", "イシツブテ", "ゴース", "メノクラゲ", "コイキング"};
     
-
+    /**
+     * ポケモンのレベルを上げ、努力値をランダムに上げるメソッド
+     * @param pokemon　レベル、努力値を上げるポケモンのインスタンス
+     */
     protected void battle(Pokemon pokemon){ //レベル上げ、努力値振りをするメソッド
         int encount = new Random().nextInt(6);
         if(pokemon.getterLevel()<pokemon.maxLevel){
@@ -28,6 +31,11 @@ public class EventMaker {
         
     }
 
+    /**
+     * ランダムでイベントを発生させるメソッド
+     * @param trainer　イベントを体験するトレーナーのインスタンス。一部イベントメソッドを呼び出すために必要
+     * @param pokemon　イベントを体験するポケモンのインスタンス
+     */
     protected void randomEvent(Trainer trainer, Pokemon pokemon){
         int eventIndex = new Random().nextInt(500);
         
@@ -59,6 +67,11 @@ public class EventMaker {
         
     }
 
+    /**
+     * ミュウ捕獲イベントを実行するメソッド
+     * @param trainer　イベントを体験するトレーナーのインスタンス。捕獲時にtrainerのpartyにミュウを追加する
+     * @param pokemon　イベントを体験するポケモンのインスタンス
+     */
     protected void mewEvent(Trainer trainer, Pokemon pokemon){
         boolean con = true;
         Scanner scanner = new Scanner(System.in);

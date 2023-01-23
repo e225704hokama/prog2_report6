@@ -1,6 +1,10 @@
 package jp.ac.uryukyu.ie.e225704;
 
 public class Wartortle extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する
+     */
     public Wartortle(){
         super();
         this.setterName("カメール");
@@ -14,6 +18,10 @@ public class Wartortle extends Pokemon{
 
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * Blastoiseのインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){

@@ -1,6 +1,10 @@
 package jp.ac.uryukyu.ie.e225704;
 
 public class Ivysaur extends Pokemon{
+    /**
+     * コンストラクタ
+     * 種族値を代入する
+     */
     public Ivysaur(){
         super();
         this.setterName("フシギソウ");
@@ -14,6 +18,10 @@ public class Ivysaur extends Pokemon{
 
     }
 
+    /**
+     * Pokemonクラスのオーバーライド
+     * Venusaurのインスタンスを返す
+     */
     @Override
     public Pokemon evolution(Trainer trainer){
         if(this.getterLevel() >= this.getterEvolutionLevel()){

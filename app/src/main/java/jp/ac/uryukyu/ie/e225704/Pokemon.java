@@ -14,7 +14,10 @@ public abstract class Pokemon {
     private int evolutionLevel; //進化するレベル
     private boolean[] eventCounter = {true, true, true, true}; //EventMakerクラスで使用。各イベント最大一回ずつのみ起きるようにする
     private boolean medal = true; //EventMakerクラスで使用。🎖をもらったかを確認する
-    
+    /**
+     * コンストラクタ
+     * 初期レベル１と０〜３１のランダムな個体値を設定する
+     */
     public Pokemon(){
         this.setterLevel(1);
         for(int i=0; i<6; i++){
@@ -85,8 +88,18 @@ public abstract class Pokemon {
         this.medal = false;
     }
 
+    /**
+     * しんかを行うメソッド
+     * ポケモン毎にしんか先が異なるので抽象メソッド
+     * @param trainer しんか時にtrainerのpartyにてもちにしんか前のインスタンスがある場合にpartyから削除する
+     * @return しんか先のインスタンスを返す
+     */
     abstract Pokemon evolution(Trainer trainer); //各々進化先が異なるので抽象メソッドにした
 
+    /**
+     * 実数値を計算するメソッド
+     * @return　計算結果
+     */
     protected int[] calcStatus(){ //実数値を計算するメソッド
         for(int i=0; i<6; i++){
             if(i == 0){ //HP = （種族値＊２＋個体値＋努力値/４）＊（レベル/１００）＋１０＋レベル
@@ -100,6 +113,10 @@ public abstract class Pokemon {
         return this.status;
     }
 
+    /**
+     * 個体値などのしんかによって変化しないパラメータをしんか先に引き継ぐメソッド
+     * @param littel　しんか前のインスタンス
+     */
     protected void takeStatus(Pokemon littel){ //進化時、進化先のインスタンスに個体値、努力値などを引き継ぐメソッド
         this.individualValue = littel.individualValue;
         this.efortValue = littel.efortValue;
